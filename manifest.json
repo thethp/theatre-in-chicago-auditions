@@ -27,7 +27,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.theatreinchicago.com/auditions/"
+        "https://www.theatreinchicago.com/auditions/",
+        "https://www.theatreinchicago.com/auditions/*"
       ],
       "css": [
         "src/inject/inject.css"
