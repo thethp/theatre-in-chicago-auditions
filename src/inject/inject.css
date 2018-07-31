@@ -1,3 +1,48 @@
-/**
- * Place your custom CSS styles here.
- **/
+.audition-manager {
+  border: 2px solid #17a2b8;
+  padding: 5px 8px;
+  border-radius: 3px;
+  font-size: 14px;
+  background-color: #f8f9fa;
+  color: black;
+}
+
+.check {
+  color: #28a745;
+  font-size: 16px;
+}
+
+.applied {
+  background-color: #28a745;
+  color: white;
+}
+
+.big-x {
+  color: #dc3545;
+  font-size: 16px;
+}
+
+.uninterested {
+  background-color: #dc3545;
+  color: white;
+}
+
+.new {
+  color: #ffc107;
+}
+
+.hide {
+  display: none;
+}
+
+.pr-10 {
+  padding-right: 10px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  text-decoration: underline;
+}
