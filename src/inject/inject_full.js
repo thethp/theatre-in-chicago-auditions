@@ -2,9 +2,8 @@ chrome.extension.sendMessage({}, function(response) {
 	var readyStateCheckInterval = setInterval(function() {
 		if (document.readyState === "interactive") {
 			clearInterval(readyStateCheckInterval);
-			$('td').on('click', '.audition-manager.toggleable', toggleShowDescription);
-			initPage();
-			console.log('fart');
+			console.log('foo');
+			//initPage();
 		}
 	}, 10);
 });

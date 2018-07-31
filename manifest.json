@@ -21,6 +21,7 @@
     "contentSettings",
     "cookies",
     "https://www.theatreinchicago.com/auditions/",
+    "https://www.theatreinchicago.com/auditions/industrydetail.php",
     "storage"
   ],
   "content_scripts": [
@@ -39,6 +40,15 @@
       "js": [
         "js/jquery/jquery.js",
         "src/inject/inject.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.theatreinchicago.com/auditions/*"
+      ],
+      "js": [
+        "js/jquery/jquery.js",
+        "src/inject/inject_full.js"
       ]
     }
   ]
