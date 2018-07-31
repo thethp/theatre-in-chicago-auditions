@@ -4,7 +4,6 @@ chrome.extension.sendMessage({}, function(response) {
 			clearInterval(readyStateCheckInterval);
 			$('td').on('click', '.audition-manager.toggleable', toggleShowDescription);
 			initPage();
-			console.log('fart');
 		}
 	}, 10);
 });
@@ -14,36 +13,38 @@ function initPage() {
 }
 
 function setAuditionState(i, audition) {
-	if(audition.getElementsByClassName('detailhead').length > 0) {
-		var auditionURL = audition.getElementsByClassName('detailhead')[0].getElementsByTagName('a')[0].href;
-		var auditionKey = auditionURL.substring(auditionURL.indexOf('ID=') + 3);
-		var auditionName = audition.getElementsByClassName('detailbody')[0].innerText;
+	if(audition) {
+		if(audition.getElementsByClassName('detailhead').length > 0) {
+			var auditionURL = audition.getElementsByClassName('detailhead')[0].getElementsByTagName('a')[0].href;
+			var auditionKey = auditionURL.substring(auditionURL.indexOf('ID=') + 3);
+			var auditionName = audition.getElementsByClassName('detailbody')[0].innerText;
 
-		chrome.storage.sync.get([auditionKey], function(auditionObject) {
-			if(isEmpty(auditionObject)) {
-				let newAuditionObject = {
-					key: auditionKey,
-					showName: auditionName,
-					new: true,
-					applied: false,
-					dateApplied: '',
-					uninterested: false,
-					dateUninterested: ''
+			chrome.storage.sync.get([auditionKey], function(auditionObject) {
+				if(isEmpty(auditionObject)) {
+					let newAuditionObject = {
+						key: auditionKey,
+						showName: auditionName,
+						new: true,
+						applied: false,
+						dateApplied: '',
+						uninterested: false,
+						dateUninterested: ''
+					}
+
+					chrome.storage.sync.set({[auditionKey]: newAuditionObject});
+
+					initAuditionPosting(audition, newAuditionObject);
+				} else {
+					let auditionData = auditionObject[auditionKey];
+					auditionData.new = false;
+
+					chrome.storage.sync.set({[auditionKey]: auditionData});
+
+					initAuditionPosting(audition, auditionData);
 				}
+			});
 
-				chrome.storage.sync.set({[auditionKey]: newAuditionObject});
-
-				initAuditionPosting(audition, newAuditionObject);
-			} else {
-				let auditionData = auditionObject[auditionKey];
-				auditionData.new = false;
-
-				chrome.storage.sync.set({[auditionKey]: auditionData});
-
-				initAuditionPosting(audition, auditionData);
-			}
-		});
-
+		}
 	}
 }
 

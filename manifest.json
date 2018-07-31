@@ -36,20 +36,20 @@
     },
     {
       "matches": [
-        "https://www.theatreinchicago.com/auditions/"
-      ],
-      "js": [
-        "js/jquery/jquery.js",
-        "src/inject/inject.js"
-      ]
-    },
-    {
-      "matches": [
         "https://www.theatreinchicago.com/auditions/*"
       ],
       "js": [
         "js/jquery/jquery.js",
         "src/inject/inject_full.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.theatreinchicago.com/auditions/"
+      ],
+      "js": [
+        "js/jquery/jquery.js",
+        "src/inject/inject.js"
       ]
     }
   ]
